@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.kuangyu</groupId>
+        <artifactId>myMathTest</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>frontend</artifactId>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.15.0</version> <!-- 使用最新版本 -->
+                <configuration>
+                    <workingDirectory>.</workingDirectory>
+                    <nodeVersion>v20.11.0</nodeVersion> <!-- Angular 19 支援的 Node.js 版本 -->
+                    <npmVersion>10.2.4</npmVersion> <!-- 相容的 npm 版本 -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm build</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run build --prod</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
