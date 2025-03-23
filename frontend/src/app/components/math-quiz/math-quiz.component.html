@@ -1,0 +1,23 @@
+<div class="quiz-container">
+    <h2>數學測驗</h2>
+    
+    <div *ngIf="!submitted">
+      <div *ngFor="let question of questions; let i = index" class="question">
+        <span>{{ getQuestionText(question) }}</span>
+        <input type="number" [(ngModel)]="answers[i]" [disabled]="submitted">
+      </div>
+      <button (click)="submitQuiz()" [disabled]="submitted">提交答案</button>
+    </div>
+  
+    <div *ngIf="submitted && results">
+      <h3>測驗結果</h3>
+      <div *ngFor="let result of results; let i = index" 
+           [class.error]="!result.correct"
+           [class.correct]="result.correct">
+        <span>{{ getQuestionText(result.question) }}</span>
+        <span>你的答案: {{ result.userAnswer }}</span>
+        <span *ngIf="!result.correct">正確答案: {{ result.correctAnswer }}</span>
+      </div>
+      <button (click)="loadQuiz()">重新開始</button>
+    </div>
+  </div>

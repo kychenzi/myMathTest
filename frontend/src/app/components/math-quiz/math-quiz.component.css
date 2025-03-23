@@ -1,0 +1,38 @@
+.quiz-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .question {
+    margin: 10px 0;
+  }
+  
+  input {
+    margin-left: 10px;
+    width: 100px;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #cccccc;
+   miniat: not-allowed;
+  }
+  
+  .error {
+    color: red;
+    margin: 10px 0;
+  }
+  
+  .correct {
+    color: green;
+    margin: 10px 0;
+  }
