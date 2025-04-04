@@ -1,0 +1,27 @@
+<div class="quiz-container">
+  <h2>柏榕的題目</h2>
+  <div *ngIf="!submitted" class="quiz-form">
+    <div *ngFor="let question of questions; let i = index" class="question-item">
+      <span class="question-text">{{ getQuestionText(question) }}</span>
+      <input type="number" [(ngModel)]="answers[i]" [disabled]="submitted" class="answer-input">
+    </div>
+    <button (click)="submitQuiz()" [disabled]="submitted" class="submit-btn">提交答案</button>
+  </div>
+  <div *ngIf="submitted && results" class="quiz-results">
+    <div class="results-header">
+      <h3>測驗結果</h3>
+      <span class="time-taken">所花時間: {{ timeTaken }}</span>
+    </div>
+    <div *ngFor="let result of results; let i = index" [class.error]="!result.correct" [class.correct]="result.correct"
+      class="result-item">
+      <div class="result-row">
+        <span class="question-text">{{ getQuestionText(result.question) }}</span>
+        <div class="answer-container">
+          <span class="user-answer">你的答案: {{ result.userAnswer }}</span>
+          <span *ngIf="!result.correct" class="correct-answer">正確答案: {{ result.correctAnswer }}</span>
+        </div>
+      </div>
+    </div>
+    <button (click)="loadQuiz()" class="restart-btn">重新開始</button>
+  </div>
+</div>

@@ -18,8 +18,26 @@ public class MathQuizController {
     @GetMapping("/generate")
     public List<Question> generateQuiz() {
         List<Question> quiz = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             quiz.add(generateQuestion());
+        }
+        return quiz;
+    }
+
+    @GetMapping("/generateForBaron")
+    public List<Question> generateQuizForBaron() {
+        List<Question> quiz = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            quiz.add(generateQuestionForBaron());
+        }
+        return quiz;
+    }
+
+    @GetMapping("/generateForMaeve")
+    public List<Question> generateQuizForMaeve() {
+        List<Question> quiz = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            quiz.add(generateQuestionForMaeve());
         }
         return quiz;
     }
@@ -35,7 +53,6 @@ public class MathQuizController {
     }
 
     private Question generateQuestion() {
-        //陳柏榕
         char[] operators = {'+', '-', '*', '/'};
         char operator = operators[random.nextInt(operators.length)];
         int num1 = 0;
@@ -43,20 +60,54 @@ public class MathQuizController {
         int tmp = 0;
         switch (operator) {
             case '*':
-                num1 = random.nextInt(1000);
-                num2 = random.nextInt(10) + 1; // 防止乘以 0
+                num1 = random.nextInt(900) + 99;
+                num2 = random.nextInt(7) + 2; // 防止乘以 0
                 break;
             case '/':
-                num1 = random.nextInt(900) + 100;
-                num2 = random.nextInt(10) + 1; // 防止除以 0
+                num1 = random.nextInt(900) + 99;
+                num2 = random.nextInt(7) + 2; // 防止除以 0
                 break;
             case '+':
-                num1 = random.nextInt(1000) + 10;
-                num2 = random.nextInt(1000) + 1; // 防止除以 0
+                num1 = random.nextInt(900) + 99;
+                num2 = random.nextInt(900) + 99; // 防止除以 0
                 break;
             case '-':
-                num1 = random.nextInt(1000);
-                num2 = random.nextInt(1000);
+                num1 = random.nextInt(900) + 99;
+                num2 = random.nextInt(900) + 99; // 防止除以 0
+                if (num1 < num2) {
+                    tmp = num1;
+                    num1 = num2;
+                    num2 = tmp;
+                } // 防止小減大
+                break;
+        }
+        return new Question(num1, num2, operator);
+    }
+
+    /** 陳柏榕 */
+    private Question generateQuestionForBaron() {
+        char[] operators = {'+', '-', '*', '/'};
+        char operator = operators[random.nextInt(operators.length)];
+        int num1 = 0;
+        int num2 = 0;
+
+        switch (operator) {
+            case '*':
+                num1 = random.nextInt(90) + 9;
+                num2 = random.nextInt(7) + 2; // 防止乘以 0
+                break;
+            case '/':
+                num1 = random.nextInt(900) + 99;
+                num2 = random.nextInt(7) + 2; // 防止除以 0
+                break;
+            case '+':
+                num1 = random.nextInt(900) + 99;
+                num2 = random.nextInt(900) + 99; // 防止除以 0
+                break;
+            case '-':
+                int tmp = 0;
+                num1 = random.nextInt(900) + 99;
+                num2 = random.nextInt(900) + 99; // 防止除以 0
                 if (num1 < num2) {
                     tmp = num1;
                     num1 = num2;
@@ -65,31 +116,37 @@ public class MathQuizController {
                 break;
         }
 
-        //陳美伊
-//        char[] operators = {'+', '-', '*'};
-//        char operator = operators[random.nextInt(operators.length)];
-//        int num1 = 0;
-//        int num2 = 0;
-//        int tmp = 0;
-//        switch (operator) {
-//            case '*':
-//                num1 = random.nextInt(10);
-//                num2 = random.nextInt(10); // 防止乘以 0
-//                break;
-//            case '+':
-//                num1 = random.nextInt(1000) + 10;
-//                num2 = random.nextInt(1000) + 1; // 防止除以 0
-//                break;
-//            case '-':
-//                num1 = random.nextInt(1000);
-//                num2 = random.nextInt(1000);
-//                if (num1 < num2) {
-//                    tmp = num1;
-//                    num1 = num2;
-//                    num2 = tmp;
-//                } // 防止小減大
-//                break;
-//        }
+        return new Question(num1, num2, operator);
+    }
+
+    /** 陳美伊 */
+    private Question generateQuestionForMaeve() {
+        char[] operators = {'+', '-', '*'};
+        char operator = operators[random.nextInt(operators.length)];
+        int num1 = 0;
+        int num2 = 0;
+
+        switch (operator) {
+            case '*':
+                num1 = random.nextInt(8)+2; // 防止乘以 0
+                num2 = random.nextInt(8)+2; // 防止乘以 0
+                break;
+            case '+':
+                num1 = random.nextInt(900)+99;
+                num2 = random.nextInt(900)+99 ;
+                break;
+            case '-':
+                int tmp = 0;
+                num1 = random.nextInt(900)+99;
+                num2 = random.nextInt(900)+99;
+                if (num1 < num2) {
+                    tmp = num1;
+                    num1 = num2;
+                    num2 = tmp;
+                } // 防止小減大
+                break;
+        }
+
         return new Question(num1, num2, operator);
     }
 

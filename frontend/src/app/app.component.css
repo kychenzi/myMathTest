@@ -1,0 +1,50 @@
+/* 整體容器 */
+.app-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* 標頭 */
+  .app-header {
+    background-color: #4a90e2;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .app-header h1 {
+    margin: 0;
+    font-size: 2em;
+  }
+  
+  /* 導航欄 */
+  .app-nav {
+    margin-top: 10px;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .nav-link:hover,
+  .nav-link.router-link-active {
+    background-color: #357abd;
+  }
+  
+  /* 主內容區 */
+  .app-content {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }

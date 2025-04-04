@@ -17,6 +17,15 @@ export class MathQuizService {
     return this.http.get<Question[]>(`${this.apiUrl}/generate`);
   }
 
+  getQuizForBaron(): Observable<Question[]> {
+    return this.http.get<Question[]>(`${this.apiUrl}/generateForBaron`);
+  }
+
+  getQuizForMaeve(): Observable<Question[]> {
+    return this.http.get<Question[]>(`${this.apiUrl}/generateForMaeve`);
+  }
+
+
   submitAnswers(answers: Answer[]): Observable<Result[]> {
     return this.http.post<Result[]>(`${this.apiUrl}/submit`, answers);
   }

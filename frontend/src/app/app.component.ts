@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { MathQuizComponent } from './components/math-quiz/math-quiz.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink, RouterOutlet } from '@angular/router'; // 確保導入 RouterOutlet
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule, MathQuizComponent], 
+  imports: [CommonModule, FormsModule, RouterOutlet], 
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
